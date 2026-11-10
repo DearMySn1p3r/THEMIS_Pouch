@@ -81,7 +81,7 @@ button{font-family:inherit}
 .prog .trk{stroke:rgba(255,255,255,.08)}
 .prog .arc{stroke:url(#pg);stroke-width:.9;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;filter:drop-shadow(0 0 2px rgba(230,215,168,.6))}
 .ring.r1{inset:7%;border:1px dashed rgba(230,215,168,.16);animation:ringIn .9s .3s ease-out forwards,spin 30s linear infinite}
-.logo-box{width:62%}
+.logo-box{width:62%;top:-6%}
 .boot{width:auto;justify-items:center;gap:8px}
 .pct{font-family:var(--f-display);font-weight:600;font-size:22px;letter-spacing:.12em;color:var(--fg);font-variant-numeric:tabular-nums}
 #loader.flash .arc{stroke-width:1.6;transition:stroke-width .3s}
@@ -297,11 +297,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="맨 위로"><img src="logo.webp" alt=""><span>THEMIS</span></a>
-    <nav aria-label="섹션">
-      <a href="#download">도안 받기</a>
-      <a href="#maker">사진 넣어 보기</a>
-      <a href="#guide">레이어 안내</a>
-    </nav>
   </div>
 </header>
 
@@ -381,7 +376,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
             <label class="upload" id="drop"><input type="file" id="photo" accept="image/*"><b>사진 고르기</b><span>끌어다 놓기 가능 · JPG, PNG, WEBP</span></label></div>
           <div class="field">
             <div class="rowx"><span class="lb">사진 크기</span><output id="zoomOut">100%</output></div>
-            <input type="range" id="zoom" min="100" max="300" value="100" step="1" aria-label="사진 크기">
+            <input type="range" id="zoom" min="100" max="500" value="100" step="1" aria-label="사진 크기">
           </div>
           <div class="field"><span class="lb">저장 배경</span>
             <div class="seg" id="segBg"><button type="button" data-v="clear" aria-pressed="true">투명</button><button type="button" data-v="dark" aria-pressed="false">블랙</button><button type="button" data-v="light" aria-pressed="false">화이트</button></div></div>
@@ -453,9 +448,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     const X0 = 20, X1 = 1112, YT = 34, YB = 1566; // body bounds incl. zipper strip
     const body = `M ${X0} ${YT}${wave(X0, X1, YT, 11, 52, 1)} L ${X1} ${YB}${wave(X0, X1, YB, 11, 52, -1)} Z`;
     const art = kind === 't' ? 'themis_mock.webp' : 'villain_mock.webp';
-    const film = 'rgba(220,226,240,.025)';
+    const film = light ? 'rgba(110,116,130,.10)' : 'rgba(220,226,240,.025)';
     let teeth = '';
-    for (let y = 86; y < 1520; y += 15) teeth += `<rect x="972" y="${y}" width="${y%60<30?34:24}" height="6" fill="rgba(190,194,206,.28)"/>`;
+    const tc = light ? 'rgba(70,74,84,.45)' : 'rgba(190,194,206,.28)';
+    for (let y = 86; y < 1520; y += 15) teeth += `<rect x="972" y="${y}" width="${y%60<30?34:24}" height="6" fill="${tc}"/>`;
     return `<svg class="pouch" viewBox="0 0 1140 1600" role="img" aria-label="${kind==='t'?'THEMIS':'THE FORSAKEN'} 포카파우치">
       <defs>
         <mask id="${id}m" maskUnits="userSpaceOnUse" x="0" y="0" width="1140" height="1600"><path d="${body}" fill="#fff"/><circle cx="96" cy="124" r="24" fill="#000"/></mask>
@@ -468,12 +464,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
         <image href="${art}" x="${X0}" y="${YT-2}" width="1016" height="1535" preserveAspectRatio="none"/>
         <g stroke="rgba(185,188,198,.4)" stroke-width="6"><line x1="${X0}" y1="132" x2="1010" y2="132"/><line x1="${X0}" y1="158" x2="1010" y2="158"/><line x1="${X0}" y1="1444" x2="1010" y2="1444"/><line x1="${X0}" y1="1470" x2="1010" y2="1470"/></g>
         ${teeth}
-        <rect x="1036" y="0" width="76" height="1600" fill="rgba(255,255,255,.07)"/>
+        <rect x="1036" y="0" width="76" height="1600" fill="${light?'rgba(60,64,74,.10)':'rgba(255,255,255,.07)'}"/>
         <line x1="1040" y1="0" x2="1040" y2="1600" stroke="${kind==='t'?'rgba(233,220,178,.55)':'rgba(226,74,60,.7)'}" stroke-width="3"/>
-        <line x1="1078" y1="0" x2="1078" y2="1600" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+        <line x1="1078" y1="0" x2="1078" y2="1600" stroke="${light?'rgba(60,64,74,.35)':'rgba(255,255,255,.28)'}" stroke-width="2"/>
+        <line x1="1110" y1="0" x2="1110" y2="1600" stroke="${light?'rgba(60,64,74,.3)':'rgba(255,255,255,0)'}" stroke-width="2"/>
         <polygon points="300,0 470,0 -10,1600 -180,1600" fill="url(#${id}s)" opacity=".7"/>
       </g>
-      <path d="${body}" fill="none" stroke="${light?'rgba(30,32,40,.28)':'rgba(255,255,255,.38)'}" stroke-width="2.5"/>
+      <path d="${body}" fill="none" stroke="${light?'rgba(40,43,52,.7)':'rgba(255,255,255,.38)'}" stroke-width="${light?6:3}"/>
       <circle cx="96" cy="124" r="24" fill="none" stroke="${kind==='t'?'rgba(233,220,178,.8)':'rgba(226,74,60,.85)'}" stroke-width="3"/>
     </svg>`;
   }
@@ -638,7 +635,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     if (st2.bg === 'light') { c.fillStyle = '#e9eaee'; c.fillRect(0,0,1140,1600); }
     const body = new Path2D(bodyD); const clip = new Path2D(bodyD); clip.moveTo(120,124); clip.arc(96,124,24,0,Math.PI*2);
     c.save(); c.clip(clip, 'evenodd');
-    c.fillStyle = 'rgba(220,226,240,.025)'; c.fillRect(0,0,1140,1600);
+    c.fillStyle = (st2.bg === 'light' || (st2.bg === 'clear' && k === 'v')) ? 'rgba(110,116,130,.10)' : 'rgba(220,226,240,.025)'; c.fillRect(0,0,1140,1600);
     // photocard
     c.save(); rr(c, CARD.x, CARD.y, CARD.w, CARD.h, CARD.r); c.clip();
     if (st2.img) {
@@ -656,17 +653,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     if (arts[k]) c.drawImage(arts[k], X0, YT-2, 1016, 1535);
     c.strokeStyle = 'rgba(185,188,198,.55)'; c.lineWidth = 7;
     [132,158,1444,1470].forEach(y => { c.beginPath(); c.moveTo(X0,y); c.lineTo(1010,y); c.stroke(); });
-    c.fillStyle = 'rgba(190,194,206,.38)';
+    const LT = st2.bg === 'light' || (st2.bg === 'clear' && k === 'v');
+    c.fillStyle = LT ? 'rgba(70,74,84,.45)' : 'rgba(190,194,206,.38)';
     for (let y = 86; y < 1520; y += 15) c.fillRect(972, y, y%60<30?34:24, 6);
-    c.fillStyle = 'rgba(255,255,255,.07)'; c.fillRect(1036,0,76,1600);
+    c.fillStyle = LT ? 'rgba(60,64,74,.10)' : 'rgba(255,255,255,.07)'; c.fillRect(1036,0,76,1600);
     c.lineWidth = 3; c.strokeStyle = k==='t' ? 'rgba(233,220,178,.55)' : 'rgba(226,74,60,.7)';
     c.beginPath(); c.moveTo(1040,0); c.lineTo(1040,1600); c.stroke();
-    c.lineWidth = 2; c.strokeStyle = 'rgba(255,255,255,.28)'; c.beginPath(); c.moveTo(1078,0); c.lineTo(1078,1600); c.stroke();
+    c.lineWidth = 2; c.strokeStyle = LT ? 'rgba(60,64,74,.35)' : 'rgba(255,255,255,.28)'; c.beginPath(); c.moveTo(1078,0); c.lineTo(1078,1600); c.stroke();
     const sh = c.createLinearGradient(80,0,460,0);
     sh.addColorStop(0,'rgba(255,255,255,0)'); sh.addColorStop(.5,'rgba(255,255,255,.10)'); sh.addColorStop(1,'rgba(255,255,255,0)');
     c.fillStyle = sh; c.beginPath(); c.moveTo(260,0); c.lineTo(480,0); c.lineTo(-40,1600); c.lineTo(-260,1600); c.closePath(); c.fill();
     c.restore();
-    c.lineWidth = 2.5; c.strokeStyle = st2.bg === 'light' ? 'rgba(40,42,50,.35)' : 'rgba(255,255,255,.38)'; c.stroke(body);
+    c.lineWidth = 3; c.strokeStyle = (st2.bg === 'light' || (st2.bg === 'clear' && k === 'v')) ? 'rgba(40,43,52,.7)' : 'rgba(255,255,255,.38)'; c.lineWidth = (st2.bg === 'light' || (st2.bg === 'clear' && k === 'v')) ? 6 : 3; c.stroke(body);
     c.lineWidth = 3; c.strokeStyle = k==='t' ? 'rgba(233,220,178,.8)' : 'rgba(226,74,60,.85)';
     c.beginPath(); c.arc(96,124,24,0,Math.PI*2); c.stroke();
   }
@@ -683,13 +681,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   seg('segKind','kind'); seg('segBg','bg');
 
   const zoom = document.getElementById('zoom'), zo = document.getElementById('zoomOut');
-  zoom.addEventListener('input', () => { st2.zoom = zoom.value/100; zo.textContent = zoom.value + '%'; draw(); });
+  zoom.addEventListener('input', () => setZoom(zoom.value/100));
   document.getElementById('resetBtn').addEventListener('click', () => { st2.ox = st2.oy = 0; st2.zoom = 1; zoom.value = 100; zo.textContent = '100%'; draw(); });
 
   function takeFile(f){
     if (!f || !/^image\//.test(f.type)) { toast('이미지 파일만 넣을 수 있어요'); return; }
     const r = new FileReader();
-    r.onload = () => loadImg(r.result).then(im => { st2.img = im; mk.classList.add('has'); st2.ox = st2.oy = 0; st2.zoom = 1; zoom.value = 100; zo.textContent = '100%'; draw(); toast('사진을 넣었어요. 끌어서 위치를 맞춰 보세요'); })
+    r.onload = () => loadImg(r.result).then(im => { st2.img = im; mk.classList.add('has'); st2.ox = st2.oy = 0; st2.zoom = 1; zoom.value = 100; zo.textContent = '100%'; draw(); toast('끌어서 이동 · 휠/두 손가락으로 확대·축소 · 더블클릭 초기화'); })
       .catch(() => toast('이 사진은 열 수 없어요. 다른 파일로 시도해 주세요'));
     r.readAsDataURL(f);
   }
@@ -701,14 +699,31 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   mk.addEventListener('dragover', e => e.preventDefault());
   mk.addEventListener('drop', e => { e.preventDefault(); takeFile(e.dataTransfer.files[0]); });
 
-  let dragging = null;
-  mk.addEventListener('pointerdown', e => { if (!st2.img) return; dragging = {x:e.clientX, y:e.clientY, ox:st2.ox, oy:st2.oy}; mk.setPointerCapture(e.pointerId); mk.classList.add('drag'); });
-  mk.addEventListener('pointermove', e => { if (!dragging) return; const k = 1140 / mk.getBoundingClientRect().width;
-    st2.ox = dragging.ox + (e.clientX - dragging.x)*k; st2.oy = dragging.oy + (e.clientY - dragging.y)*k; draw(); });
-  const end = () => { dragging = null; mk.classList.remove('drag'); };
+  /* free zoom / pan / pinch — photo always covers the card */
+  const ZMIN = 1, ZMAX = 5;
+  const toCanvas = (cx, cy) => { const r = mk.getBoundingClientRect(), k = 1140 / r.width; return [(cx - r.left) * k, (cy - r.top) * k]; };
+  function setZoom(z, px, py){
+    z = Math.max(ZMIN, Math.min(ZMAX, z));
+    if (px == null) { px = CARD.x + CARD.w/2; py = CARD.y + CARD.h/2; }
+    const dx = px - (CARD.x + CARD.w/2), dy = py - (CARD.y + CARD.h/2), f = z / st2.zoom;
+    st2.ox = dx - (dx - st2.ox) * f; st2.oy = dy - (dy - st2.oy) * f; st2.zoom = z;
+    const v = Math.round(z * 100); zoom.value = v; zo.textContent = v + '%'; draw();
+  }
+  const pts = new Map(); let pan = null, pinch = null;
+  mk.addEventListener('pointerdown', e => { if (!st2.img) return; mk.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); mk.classList.add('drag');
+    if (pts.size === 1) pan = {x:e.clientX, y:e.clientY, ox:st2.ox, oy:st2.oy};
+    if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = {d: Math.hypot(a[0]-b[0], a[1]-b[1]), z: st2.zoom}; pan = null; } });
+  mk.addEventListener('pointermove', e => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, [e.clientX, e.clientY]);
+    if (pinch && pts.size >= 2) { const [a, b] = [...pts.values()]; const d = Math.hypot(a[0]-b[0], a[1]-b[1]);
+      const [mx, my] = toCanvas((a[0]+b[0])/2, (a[1]+b[1])/2); setZoom(pinch.z * d / pinch.d, mx, my); return; }
+    if (pan) { const k = 1140 / mk.getBoundingClientRect().width; st2.ox = pan.ox + (e.clientX - pan.x)*k; st2.oy = pan.oy + (e.clientY - pan.y)*k; draw(); } });
+  const end = e => { pts.delete(e.pointerId); if (pts.size < 2) pinch = null;
+    if (pts.size === 1) { const [p] = [...pts.values()]; pan = {x:p[0], y:p[1], ox:st2.ox, oy:st2.oy}; }
+    if (!pts.size) { pan = null; mk.classList.remove('drag'); } };
   mk.addEventListener('pointerup', end); mk.addEventListener('pointercancel', end);
   mk.addEventListener('wheel', e => { if (!st2.img) return; e.preventDefault();
-    const v = Math.max(100, Math.min(300, +zoom.value - Math.sign(e.deltaY)*6)); zoom.value = v; st2.zoom = v/100; zo.textContent = v + '%'; draw(); }, {passive:false});
+    const [px, py] = toCanvas(e.clientX, e.clientY); setZoom(st2.zoom * Math.exp(-e.deltaY * 0.0018), px, py); }, {passive:false});
+  mk.addEventListener('dblclick', () => { if (!st2.img) return; st2.ox = st2.oy = 0; setZoom(1); });
 
   const pngBtn = document.getElementById('pngBtn');
   pngBtn.addEventListener('click', async () => {
