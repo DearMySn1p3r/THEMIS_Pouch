@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <title>THEMIS 포카파우치</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -38,20 +39,10 @@ button{font-family:inherit}
   background:linear-gradient(90deg,transparent,var(--gold) 18%,#fff 50%,var(--red) 82%,transparent);box-shadow:0 0 24px 4px rgba(230,215,168,.55),0 0 60px 10px rgba(224,73,59,.25)}
 #loader .grid{position:absolute;inset:0;opacity:.0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;
   -webkit-mask-image:radial-gradient(circle at 50% 50%,#000,transparent 65%);mask-image:radial-gradient(circle at 50% 50%,#000,transparent 65%);animation:gridIn 1.4s .1s ease-out forwards}
-#loader .rays{position:absolute;left:50%;top:44%;width:180vmax;height:180vmax;margin:-90vmax 0 0 -90vmax;opacity:0;pointer-events:none;
-  background:repeating-conic-gradient(from 0deg,rgba(230,215,168,.10) 0 2deg,transparent 2deg 12deg);
-  -webkit-mask-image:radial-gradient(circle,#000 0,transparent 45%);mask-image:radial-gradient(circle,#000 0,transparent 45%);animation:spin 40s linear infinite}
-#loader.flash .rays{animation:spin 40s linear infinite,raysIn 1s ease-out forwards}
 #loader .core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:3;transition:opacity .35s,transform .6s cubic-bezier(.2,.7,.2,1);padding:24px}
 .emblem{position:relative;width:min(300px,64vw);aspect-ratio:1;display:grid;place-items:center}
 .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(230,215,168,.18);opacity:0;animation:ringIn .9s ease-out forwards}
 .ring.r1{inset:-4%;border-style:dashed;border-color:rgba(230,215,168,.22);animation:ringIn .9s .2s ease-out forwards,spin 26s linear infinite}
-.ring.r2{inset:8%;border-color:rgba(255,255,255,.08);animation-delay:.35s}
-.ring.r3{inset:-14%;border:0;border-top:1px solid rgba(224,73,59,.55);border-right:1px solid rgba(224,73,59,.15);animation:ringIn .9s .5s ease-out forwards,spin 3.2s linear infinite}
-.ring.r4{inset:-14%;border:0;border-bottom:1px solid rgba(230,215,168,.6);border-left:1px solid rgba(230,215,168,.12);animation:ringIn .9s .5s ease-out forwards,spinR 4.4s linear infinite}
-.ticks{position:absolute;inset:-8%;border-radius:50%;opacity:0;animation:ringIn 1s .6s ease-out forwards,spinR 60s linear infinite;
-  background:repeating-conic-gradient(rgba(255,255,255,.35) 0 .6deg,transparent .6deg 7.5deg);
-  -webkit-mask:radial-gradient(circle,transparent 66%,#000 67%,#000 70%,transparent 71%);mask:radial-gradient(circle,transparent 66%,#000 67%,#000 70%,transparent 71%)}
 .logo-box{position:relative;width:78%;aspect-ratio:640/554;opacity:0;filter:blur(14px) brightness(.3);transform:scale(.9) translateY(4px);animation:logoIn 1.3s .25s cubic-bezier(.2,.7,.2,1) forwards}
 .logo-box img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 40px rgba(205,210,225,.18))}
 .logo-box .scan{position:absolute;inset:0;overflow:hidden;-webkit-mask:url("logo.webp") center/contain no-repeat;mask:url("logo.webp") center/contain no-repeat}
@@ -59,24 +50,14 @@ button{font-family:inherit}
 .logo-box .eye{position:absolute;left:50.3%;top:52.9%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.3);border-radius:50%;
   background:radial-gradient(circle,rgba(255,250,228,1),rgba(230,215,168,.45) 32%,transparent 68%);opacity:0;mix-blend-mode:screen}
 #loader.flash .eye{animation:eye 1s ease-out forwards}
-.shock{position:absolute;left:50%;top:50%;width:40%;aspect-ratio:1;margin:-20% 0 0 -20%;border-radius:50%;border:2px solid rgba(255,248,225,.9);opacity:0;pointer-events:none}
-#loader.flash .shock{animation:shock 1s ease-out forwards}
-#loader.flash .shock.s2{animation:shock 1.2s .14s ease-out forwards;border-color:rgba(224,73,59,.8)}
-.spark{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;background:#fff6dc;opacity:0;box-shadow:0 0 8px 2px rgba(230,215,168,.7)}
-#loader.flash .spark{animation:spark .9s cubic-bezier(.15,.6,.3,1) forwards}
 .boot{width:min(300px,78vw);display:grid;gap:10px;opacity:0;animation:fadeUp .6s .8s forwards}
-.boot .brow{display:flex;justify-content:space-between;gap:12px;color:var(--dim)}
-.boot .brow b{color:var(--gold);font-weight:500}
-.bar{height:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
-.bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),#fff 70%,var(--red))}
 #status{min-height:1.4em;color:var(--mute);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-align:center}
 #status.glitch{animation:glitch .28s steps(2) 1}
-.boot .title{font-family:var(--f-display);font-weight:700;letter-spacing:.5em;font-size:13px;color:var(--fg);text-align:center;padding-left:.5em;opacity:.9}
 #skip{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:6;background:none;border:1px solid var(--line-2);color:var(--dim);
   font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;padding:7px 12px;border-radius:999px;cursor:pointer}
 #skip:hover{color:var(--fg);border-color:var(--mute)}
 #loader.open .core,#loader.open #skip{opacity:0;transform:scale(1.12)}
-#loader.open .grid,#loader.open .rays{opacity:0;transition:opacity .3s}
+#loader.open .grid{opacity:0;transition:opacity .3s}
 #loader.open .crack{animation:crack .6s ease-out forwards}
 #loader.open .half.top{transform:translateY(-101%);transition-delay:.42s}
 #loader.open .half.bot{transform:translateY(101%);transition-delay:.42s}
@@ -87,12 +68,23 @@ button{font-family:inherit}
 @keyframes spinR{to{transform:rotate(-360deg)}}
 @keyframes scan{to{top:105%}}
 @keyframes eye{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}35%{opacity:1;transform:translate(-50%,-50%) scale(1.4)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
-@keyframes shock{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(4.2);border-width:0}}
-@keyframes spark{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--sx),var(--sy))}}
-@keyframes raysIn{0%{opacity:0}30%{opacity:1}100%{opacity:.55}}
 @keyframes crack{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes glitch{0%{transform:translateX(-2px);color:var(--red-text)}50%{transform:translateX(2px);color:var(--gold)}100%{transform:none}}
+
+
+/* loader v2 */
+#loader .core{gap:40px}
+.emblem{width:min(240px,58vw)}
+.prog{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);opacity:0;animation:ringIn .8s .2s ease-out forwards}
+.prog circle{fill:none;stroke-width:.6}
+.prog .trk{stroke:rgba(255,255,255,.08)}
+.prog .arc{stroke:url(#pg);stroke-width:.9;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;filter:drop-shadow(0 0 2px rgba(230,215,168,.6))}
+.ring.r1{inset:7%;border:1px dashed rgba(230,215,168,.16);animation:ringIn .9s .3s ease-out forwards,spin 30s linear infinite}
+.logo-box{width:62%}
+.boot{width:auto;justify-items:center;gap:8px}
+.pct{font-family:var(--f-display);font-weight:600;font-size:22px;letter-spacing:.12em;color:var(--fg);font-variant-numeric:tabular-nums}
+#loader.flash .arc{stroke-width:1.6;transition:stroke-width .3s}
 
 /* ───────── HEADER ───────── */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
@@ -122,7 +114,6 @@ nav a:hover{color:var(--fg)}
 #dust{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero{position:relative;z-index:1;padding-block:80px 40px;overflow:clip}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
-.hero .eb{color:var(--dim);display:block;margin-bottom:18px}
 h1{font-family:var(--f-display);font-weight:700;font-size:clamp(34px,4.4vw,52px);line-height:1.04;letter-spacing:.01em;margin:0 0 16px}
 h1 .x{color:var(--dim);font-weight:500}
 .sub{color:var(--mute);font-size:14px;margin:0 0 26px}
@@ -143,12 +134,10 @@ h1 .x{color:var(--dim);font-weight:500}
 .tag::before{content:"";width:18px;height:1px;background:currentColor}
 .p-main.t .tag{left:0;color:var(--gold)}
 .p-main.v .tag{right:0;color:var(--red-text);flex-direction:row-reverse}
-.drifter{position:absolute;width:44px;opacity:.07;filter:blur(1px);pointer-events:none;animation:drift linear infinite}
-@keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(var(--dx),var(--dy)) rotate(var(--r))}}
 .pouch{width:100%;height:auto;display:block}
 
 /* ───────── SECTIONS ───────── */
-section{position:relative;z-index:1;padding-block:44px}
+section{position:relative;z-index:1;padding-block:44px;scroll-margin-top:20px}
 .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:8px}
 .sec-head .l{display:flex;align-items:baseline;gap:14px}
 .sec-head .n{font-family:var(--f-mono);font-size:11px;color:var(--dim)}
@@ -185,7 +174,7 @@ section{position:relative;z-index:1;padding-block:44px}
 .prev .pv{display:block;width:150px;transform:rotate(-2deg);filter:drop-shadow(0 16px 20px rgba(0,0,0,.35));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .prev.light .pv{transform:rotate(2deg);filter:drop-shadow(0 16px 20px rgba(0,0,0,.18))}
 .prev:hover .pv{transform:rotate(0) scale(1.04)}
-.pv-l{position:absolute;left:12px;bottom:10px;color:var(--dim);font-size:9.5px}
+.pv-l{position:absolute;right:12px;bottom:8px;color:var(--dim);font-size:14px}
 .prev.light .pv-l{color:#6a6d76}
 #lb{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:24px}
 #lb[hidden],[hidden]{display:none!important}
@@ -203,7 +192,8 @@ section{position:relative;z-index:1;padding-block:44px}
 .canvas-wrap.bg-clear.k-v{background:repeating-conic-gradient(#ffffff 0 25%,#e6e7ea 0 50%) 0 0/14px 14px}
 .canvas-wrap.bg-dark{background:#0d0e12}
 .canvas-wrap.bg-light{background:#e9eaee}
-#mk{width:min(100%,360px);height:auto;aspect-ratio:1140/1600;touch-action:none;cursor:grab}
+#mk{width:min(100%,360px);height:auto;aspect-ratio:1140/1600;cursor:default}
+#mk.has{touch-action:none;cursor:grab}
 #mk.drag{cursor:grabbing}
 .panel{display:grid;gap:20px}
 .field{display:grid;gap:8px}
@@ -241,7 +231,7 @@ input[type=range]{width:100%;accent-color:var(--gold)}
 .step:last-child{border-bottom:1px solid var(--line)}
 .step .n{font-family:var(--f-mono);font-size:11px;color:var(--gold)}
 .step b{font-weight:500;font-size:13.5px}
-.step span{color:var(--mute);font-size:12.5px;text-align:right}
+.step > span:not(.n){color:var(--mute);font-size:12.5px;text-align:right}
 .note{margin:14px 0 0;font-size:12px;color:var(--dim)}
 
 footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:32px;padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
@@ -256,14 +246,19 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   .cols{gap:8px}
   .stage{height:clamp(320px,84vw,420px)}
   .p-main{width:clamp(130px,36vw,190px)}
-  nav{display:none}
+  nav{gap:14px}
+  nav a{font-size:12px}
 }
 @media (max-width:520px){
+  .brand span{display:none}
   .tag{display:none}
   .row .nm code{display:none}
   .stack{height:250px}
+  .stack .plane{width:104px;margin:-79px 0 0 -112px}
+  .stack .lbl{left:calc(50% + 58px)}
+  .stage{height:clamp(300px,78vw,360px)}
   .step{grid-template-columns:32px minmax(0,1fr)}
-  .step span{grid-column:2;text-align:left}
+  .step > span:not(.n){grid-column:2;text-align:left}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -277,8 +272,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <div class="crack"></div>
   <div class="core">
     <div class="emblem">
-      <div class="ticks"></div>
-      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
+      <svg class="prog" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6d7a8"/><stop offset=".6" stop-color="#fff4d8"/><stop offset="1" stop-color="#e0493b"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="48" class="trk"/>
+        <circle cx="50" cy="50" r="48" class="arc" id="arc" pathLength="100"/>
+      </svg>
+      <div class="ring r1"></div>
       <div class="logo-box">
         <img src="logo.webp" alt="THEMIS 공식 로고">
         <div class="scan"></div>
@@ -286,9 +285,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
       </div>
     </div>
     <div class="boot">
-      <div class="title">THEMIS</div>
-      <div class="brow mono"><span>KOREA HQ</span><b id="pct">000%</b></div>
-      <div class="bar"><i id="barfill"></i></div>
+      <b id="pct" class="pct">000</b>
       <div id="status">균열 감시망 연결 중</div>
     </div>
   </div>
@@ -326,7 +323,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
           <path d="M140 20 L230 140 L205 200 L285 290 L262 330 L352 420 L335 470 L470 590" stroke="url(#rg)" stroke-width="9" filter="url(#glow)" opacity=".5"/>
           <path d="M140 20 L230 140 L205 200 L285 290 L262 330 L352 420 L335 470 L470 590" stroke="url(#rg)" stroke-width="1.1"/>
         </svg>
-        <div id="drifters"></div>
         <div class="p-main t"><div class="tilt" data-depth="1"><div class="float" id="heroT"></div></div><span class="tag">THEMIS / WHITE INK</span></div>
         <div class="p-main v"><div class="tilt" data-depth="1.5"><div class="float" id="heroV"></div></div><span class="tag">THE FORSAKEN / BLACK</span></div>
       </div>
@@ -342,7 +338,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
       <div class="cols">
         <div class="t">
           <div class="col-head"><h3>THEMIS</h3><span>투명 · 화이트</span></div>
-          <button class="prev" type="button" data-prev="t" aria-label="THEMIS 완성본 크게 보기"><span class="pv" id="pvT"></span><span class="pv-l mono">완성본 미리보기 ⤢</span></button>
+          <button class="prev" type="button" data-prev="t" aria-label="THEMIS 크게 보기"><span class="pv" id="pvT"></span><span class="pv-l" aria-hidden="true">⤢</span></button>
           <div class="row"><div class="nm"><b>도안</b><code>Themis_Pouch_Color.png</code></div>
             <a class="get" href="Themis_Pouch_Color.png" data-name="Themis_Pouch_Color.png" aria-label="THEMIS 도안 받기">받기<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
           <div class="row"><div class="nm"><b>화이트 레이어</b><code>Themis_Pouch_White.png</code></div>
@@ -352,7 +348,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
         </div>
         <div class="v">
           <div class="col-head"><h3>THE FORSAKEN</h3><span>투명 · 블랙 + 화이트</span></div>
-          <button class="prev light" type="button" data-prev="v" aria-label="FORSAKEN 완성본 크게 보기"><span class="pv" id="pvV"></span><span class="pv-l mono">완성본 미리보기 ⤢</span></button>
+          <button class="prev light" type="button" data-prev="v" aria-label="FORSAKEN 크게 보기"><span class="pv" id="pvV"></span><span class="pv-l" aria-hidden="true">⤢</span></button>
           <div class="row"><div class="nm"><b>도안</b><code>Forsaken_Pouch_Color.png</code></div>
             <a class="get" href="Forsaken_Pouch_Color.png" data-name="Forsaken_Pouch_Color.png" aria-label="FORSAKEN 도안 받기">받기<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
           <div class="row"><div class="nm"><b>화이트 레이어</b><code>Forsaken_Pouch_White.png</code></div>
@@ -431,7 +427,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <div class="wrap"><span>THEMIS — 포카파우치 배포</span><span class="mono">KOREA HQ · POUCH ARCHIVE</span></div>
 </footer>
 
-<div id="lb" hidden><div class="lb-bg" data-close></div><div class="lb-box"><div class="lb-pouch" id="lbPouch"></div><div class="lb-bar"><span class="mono" id="lbName"></span><button class="btn sm" type="button" data-close>닫기</button></div></div></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="파우치 크게 보기" hidden><div class="lb-bg" data-close></div><div class="lb-box"><div class="lb-pouch" id="lbPouch"></div><div class="lb-bar"><span class="mono" id="lbName"></span><button class="btn sm" type="button" data-close>닫기</button></div></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -487,32 +483,23 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
 
   document.getElementById('pvT').innerHTML = pouchSVG('t');
   document.getElementById('pvV').innerHTML = pouchSVG('v', true);
-  const lb = document.getElementById('lb'), lbBox = lb.querySelector('.lb-box');
+  const lb = document.getElementById('lb'), lbBox = lb.querySelector('.lb-box'); let lastFocus = null;
+  const closeLb = () => { if (lb.hidden) return; lb.hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
   document.querySelectorAll('[data-prev]').forEach(b => b.addEventListener('click', () => {
     const k = b.dataset.prev;
     document.getElementById('lbPouch').innerHTML = pouchSVG(k, k === 'v');
-    document.getElementById('lbName').textContent = k === 't' ? 'THEMIS · 완성본' : 'THE FORSAKEN · 완성본';
-    lbBox.classList.toggle('light', k === 'v'); lb.hidden = false;
+    document.getElementById('lbName').textContent = k === 't' ? 'THEMIS' : 'THE FORSAKEN';
+    lbBox.classList.toggle('light', k === 'v'); lb.hidden = false; lastFocus = b; document.body.style.overflow = 'hidden'; lb.querySelector('.btn[data-close]').focus();
   }));
-  lb.addEventListener('click', e => { if (e.target.closest('[data-close]')) lb.hidden = true; });
-  addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
-  /* drifting background pouches */
-
-  const dr = document.getElementById('drifters');
-  if (dr) [[2,74,'t'],[90,4,'v']].forEach(([l,t,k],i) => {
-    const d = document.createElement('div'); d.className = 'drifter';
-    d.style.left = l + '%'; d.style.top = t + '%'; d.style.width = (38 + (i%3)*12) + 'px';
-    d.style.setProperty('--dx', (i%2?-1:1)*(20+i*6) + 'px'); d.style.setProperty('--dy', (i%2?1:-1)*(30+i*5) + 'px');
-    d.style.setProperty('--r', (i%2?-1:1)*(8+i*3) + 'deg');
-    d.style.animationDuration = (16 + i*3) + 's'; d.style.animationDelay = (-i*2.3) + 's';
-    d.innerHTML = pouchSVG(k); dr.appendChild(d);
-  });
+  lb.addEventListener('click', e => { if (e.target.closest('[data-close]')) closeLb(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
   /* pointer parallax */
   const stage = document.getElementById('stage');
   const tilts = stage.querySelectorAll('.tilt');
   if (!RM) {
     addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
       const r = stage.getBoundingClientRect();
       const nx = (e.clientX - (r.left + r.width/2)) / innerWidth;
       const ny = (e.clientY - (r.top + r.height/2)) / innerHeight;
@@ -536,13 +523,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   tick(); }
 
   /* ---------- loader ---------- */
-  const L = document.getElementById('loader'), pct = document.getElementById('pct'), bar = document.getElementById('barfill'), st = document.getElementById('status');
+  const L = document.getElementById('loader'), pct = document.getElementById('pct'), arc = document.getElementById('arc'), st = document.getElementById('status');
   const msgs = [[0,'균열 감시망 연결 중'],[28,'에코 시그니처 확인 중'],[58,'각인 계보 대조 중'],[86,'Council 승인 대기'],[100,'접근 승인 · 입장합니다']];
   document.body.classList.add('locked');
   let done = false;
   function finish(){
     if (done) return; done = true;
-    pct.textContent = '100%'; bar.style.transform = 'scaleX(1)'; st.textContent = msgs[4][1];
+    pct.textContent = '100'; arc.style.strokeDashoffset = 0; st.textContent = msgs[4][1];
     L.classList.add('flash');
     setTimeout(() => { L.classList.add('open'); document.body.classList.remove('locked'); }, RM ? 0 : 900);
     setTimeout(() => L.remove(), RM ? 50 : 2500);
@@ -553,8 +540,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     if (done) return;
     const k = Math.max(0, Math.min(1, (now - t0) / DUR));
     const e = 1 - Math.pow(1-k, 2.2), v = Math.floor(e*100);
-    pct.textContent = String(v).padStart(3,'0') + '%';
-    bar.style.transform = `scaleX(${e})`;
+    pct.textContent = String(v).padStart(3,'0');
+    arc.style.strokeDashoffset = 100 - e*100;
     for (let i = msgs.length-1; i >= 0; i--) if (v >= msgs[i][0]) { if (st.textContent !== msgs[i][1]) { st.textContent = msgs[i][1]; st.classList.remove('glitch'); void st.offsetWidth; st.classList.add('glitch'); } break; }
     if (k >= 1) finish(); else requestAnimationFrame(run);
   }
@@ -702,7 +689,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   function takeFile(f){
     if (!f || !/^image\//.test(f.type)) { toast('이미지 파일만 넣을 수 있어요'); return; }
     const r = new FileReader();
-    r.onload = () => loadImg(r.result).then(im => { st2.img = im; st2.ox = st2.oy = 0; st2.zoom = 1; zoom.value = 100; zo.textContent = '100%'; draw(); toast('사진을 넣었어요. 끌어서 위치를 맞춰 보세요'); })
+    r.onload = () => loadImg(r.result).then(im => { st2.img = im; mk.classList.add('has'); st2.ox = st2.oy = 0; st2.zoom = 1; zoom.value = 100; zo.textContent = '100%'; draw(); toast('사진을 넣었어요. 끌어서 위치를 맞춰 보세요'); })
       .catch(() => toast('이 사진은 열 수 없어요. 다른 파일로 시도해 주세요'));
     r.readAsDataURL(f);
   }
