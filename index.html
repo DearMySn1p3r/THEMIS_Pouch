@@ -42,7 +42,7 @@ img{max-width:100%;display:block}
 .logo-box{position:relative;width:min(340px,70vw);aspect-ratio:640/554;opacity:0;filter:blur(12px) brightness(.4);transform:scale(.94);animation:logoIn 1.3s .15s cubic-bezier(.2,.7,.2,1) forwards}
 .logo-box img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 40px rgba(205,210,225,.12))}
 .logo-box .scan{position:absolute;inset:0;overflow:hidden;
-  -webkit-mask:url("img/logo.webp") center/contain no-repeat;mask:url("img/logo.webp") center/contain no-repeat}
+  -webkit-mask:url("logo.webp") center/contain no-repeat;mask:url("logo.webp") center/contain no-repeat}
 .logo-box .scan::before{content:"";position:absolute;left:-10%;right:-10%;height:30%;top:-35%;
   background:linear-gradient(180deg,transparent,rgba(255,250,230,.75) 50%,transparent);animation:scan 1.6s .6s ease-in-out 2}
 .logo-box .eye{position:absolute;left:50.3%;top:52.9%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%) scale(.3);border-radius:50%;
@@ -244,6 +244,90 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* ───────── MINIMAL OVERRIDES ───────── */
+:root{--ink:#0a0b0f;--panel:#111319;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--fg:#f1f2f5;--mute:#9a9fab;--r:12px}
+body{font-size:15px;line-height:1.6;letter-spacing:-.005em}
+header.top{background:rgba(10,11,15,.8);border-bottom-color:var(--line)}
+.brand img{width:28px}
+.brand small{display:none}
+nav{gap:24px}
+nav a{font-size:14px;color:var(--mute)}
+.hero{padding-block:72px 56px;overflow:clip}
+.hero .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+h1{font-family:var(--f-body);font-size:clamp(34px,4.6vw,56px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}
+h1 .x{color:var(--mute);font-weight:400}
+.lead{font-size:16px;color:var(--mute);margin:0 0 28px}
+.btn{border-radius:10px;padding:12px 18px;font-size:14px}
+.btn:hover{transform:none}
+.btn.solid{background:var(--fg);border-color:var(--fg);color:var(--ink)}
+.btn.solid:hover{background:#fff}
+.stage{height:clamp(400px,44vw,540px)}
+.p-main.t{left:4%;top:8%}
+.p-main.v{right:6%;top:14%}
+.p-main .float,.fac-pouch{filter:drop-shadow(0 24px 28px rgba(0,0,0,.5))}
+section{padding-block:56px}
+.sec-head{border-top:0;padding-top:0;margin-bottom:24px;align-items:baseline}
+.sec-head h2{font-family:var(--f-body);font-size:24px;letter-spacing:-.02em;margin:0}
+.sec-head p{font-size:14px}
+.factions{gap:16px}
+.fac{border-radius:var(--r);background:var(--panel);border-color:var(--line);padding:24px;gap:20px}
+.fac::before{display:none}
+.fac h3{font-family:var(--f-body);font-size:22px;letter-spacing:-.01em;margin:0 0 6px}
+.fac .sub{color:var(--fg);opacity:.8;margin:0 0 2px}
+.fac .desc{font-size:13px}
+.fac-top{grid-template-columns:minmax(0,1fr) 104px}
+.fac.v .fac-top > .fac-pouch-bg{border-radius:8px;padding:10px}
+.files{gap:0;border-top:1px solid var(--line)}
+.file{border:0;border-bottom:1px solid var(--line);background:none;padding:12px 0}
+.file:hover{background:none}
+.file .name{font-size:14px;font-weight:500}
+.chip{border:0;background:rgba(255,255,255,.07);color:var(--mute);border-radius:6px;padding:2px 7px}
+.dl{width:38px;height:38px;border-radius:10px;border-color:var(--line-2)}
+.dl:hover{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+.dl svg{width:16px;height:16px}
+.all{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);margin-top:16px}
+.canvas-wrap{border-radius:var(--r);border-color:var(--line);overflow:hidden}
+.seg{border-radius:10px;overflow:hidden;border-color:var(--line-2)}
+.upload{border-radius:var(--r)}
+.upload:hover,.upload.over{border-color:var(--fg);background:rgba(255,255,255,.04)}
+input[type=range]{accent-color:var(--fg)}
+.lbl2{font-size:13px;color:var(--mute)}
+.field > .mono,.rowx .mono{font-family:var(--f-body);text-transform:none;letter-spacing:0;font-size:13px}
+.guide{grid-template-columns:minmax(0,1fr)}
+.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.step{display:block;padding:20px;border:1px solid var(--line)!important;border-radius:var(--r);background:var(--panel)}
+.step::before{display:block;margin-bottom:10px;color:var(--mute)}
+.step h4{font-size:15px}
+footer{border-top-color:var(--line)}
+footer .mono{font-family:var(--f-body);text-transform:none;letter-spacing:0;font-size:13px}
+#toast{border-radius:10px}
+@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero{padding-block:40px 32px}}
+@media (max-width:640px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* decorations back, compact */
+.eb{display:block;color:var(--mute);font-size:10.5px;letter-spacing:.14em;margin-bottom:8px}
+.hero-eb{margin-bottom:14px}
+.fac::before{display:block;height:2px}
+.fac.t .chip{color:var(--gold);background:var(--gold-dim)}
+.fac.v .chip{color:var(--red);background:var(--red-dim)}
+.fac.t .dl:hover{background:var(--gold);border-color:var(--gold);color:#16130a}
+.fac.v .dl:hover{background:var(--red);border-color:var(--red);color:#fff}
+.fac h3{font-family:var(--f-display);letter-spacing:.03em}
+.btn.solid{background:var(--gold);border-color:var(--gold);color:#16130a}
+.btn.solid:hover{background:#f4ead0}
+.upload:hover,.upload.over{border-color:var(--gold);background:var(--gold-dim)}
+input[type=range]{accent-color:var(--gold)}
+.tag{font-size:9.5px}
+.guide{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:32px;align-items:center}
+.steps{grid-template-columns:minmax(0,1fr);gap:10px}
+.step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;padding:14px 16px}
+.step::before{display:block;margin:2px 0 0;color:var(--gold)}
+.stack{height:340px}
+.stack .plane{width:150px;margin:-113px 0 0 -110px}
+.stack .lbl{left:calc(50% + 100px)}
+@media (max-width:900px){.guide{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.stack{height:300px}.stack .plane{width:120px;margin:-90px 0 0 -60px}}
 </style>
 
 <!-- LOADER -->
@@ -253,7 +337,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <div class="grid"></div>
   <div class="core">
     <div class="logo-box">
-      <img src="img/logo.webp" alt="THEMIS 공식 로고">
+      <img src="logo.webp" alt="THEMIS 공식 로고">
       <div class="scan"></div>
       <div class="eye"></div>
     </div>
@@ -266,12 +350,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <button id="skip" type="button">SKIP ▸</button>
 </div>
 
+
+
 <canvas id="dust" aria-hidden="true"></canvas>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="맨 위로">
-      <img src="img/logo.webp" alt="">
+      <img src="logo.webp" alt="">
       <div><span>THEMIS</span><small>POUCH ARCHIVE</small></div>
     </a>
     <nav aria-label="섹션">
@@ -287,21 +373,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <section class="hero">
     <div class="wrap">
       <div>
-                <h1 style="margin-top:0">THEMIS <span class="x">×</span><br><span class="forsaken">FORSAKEN</span><span class="ko">포카파우치 도안 배포</span></h1>
+                <div class="eb mono hero-eb">THEMIS KOREA HQ · POUCH ARCHIVE</div>
+        <h1>THEMIS <span class="x">×</span> FORSAKEN</h1>
+        <p class="lead">포카파우치 도안 배포 · PNG / PSD</p>
                 <div class="cta">
           <a class="btn solid" href="#download">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>도안 받으러 가기</a>
-          <a class="btn" href="#maker">내 사진 넣어 보기</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>도안 받기</a>
+          <a class="btn" href="#maker">사진 넣어 보기</a>
         </div>
       </div>
       <div class="stage" id="stage">
         <svg class="rift" viewBox="0 0 600 600" preserveAspectRatio="none" aria-hidden="true">
           <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9dcb2" stop-opacity="0"/><stop offset=".45" stop-color="#e9dcb2" stop-opacity=".55"/><stop offset=".6" stop-color="#e24a3c" stop-opacity=".55"/><stop offset="1" stop-color="#e24a3c" stop-opacity="0"/></linearGradient>
           <filter id="glow"><feGaussianBlur stdDeviation="6"/></filter></defs>
-          <path d="M120 40 L210 150 L190 205 L270 290 L250 330 L345 420 L330 470 L470 580" stroke="url(#rg)" stroke-width="10" filter="url(#glow)" opacity=".6"/>
-          <path d="M120 40 L210 150 L190 205 L270 290 L250 330 L345 420 L330 470 L470 580" stroke="url(#rg)" stroke-width="1.4"/>
+          <path d="M120 40 L210 150 L190 205 L270 290 L250 330 L345 420 L330 470 L470 580" stroke="url(#rg)" stroke-width="10" filter="url(#glow)" opacity=".5"/>
+          <path d="M120 40 L210 150 L190 205 L270 290 L250 330 L345 420 L330 470 L470 580" stroke="url(#rg)" stroke-width="1.2"/>
         </svg>
         <div id="drifters"></div>
+        
         <div class="p-main t"><div class="tilt" data-depth="1"><div class="float" id="heroT"></div></div><span class="tag">THEMIS / CLEAR · WHITE INK</span></div>
         <div class="p-main v"><div class="tilt" data-depth="1.6"><div class="float" id="heroV"></div></div><span class="tag">THE FORSAKEN / CLEAR · BLACK</span></div>
       </div>
@@ -311,7 +400,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <section id="download">
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="mono" style="color:var(--mute)">ARCHIVE · 6 FILES</span><h2><span class="ko">도안 받기</span></h2></div>
+        <div><span class="eb mono">ARCHIVE · 6 FILES</span><h2><span class="ko">도안 받기</span></h2></div>
         <p>도안 PNG · PSD는 ZIP으로 저장</p>
       </div>
 
@@ -327,9 +416,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
           </div>
           <div class="files">
             <div class="file"><div class="name">도안 <span class="chip">COLOR</span></div>
-              <a class="dl" href="files/Themis_Pouch_Color.png" data-name="Themis_Pouch_Color.png" aria-label="THEMIS 도안 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
+              <a class="dl" href="Themis_Pouch_Color.png" data-name="Themis_Pouch_Color.png" aria-label="THEMIS 도안 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
             <div class="file"><div class="name">화이트 레이어 <span class="chip">WHITE</span></div>
-              <a class="dl" href="files/Themis_Pouch_White.png" data-name="Themis_Pouch_White.png" aria-label="THEMIS 화이트 레이어 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
+              <a class="dl" href="Themis_Pouch_White.png" data-name="Themis_Pouch_White.png" aria-label="THEMIS 화이트 레이어 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
             <div class="file"><div class="name">원본 PSD <span class="chip">PSD</span></div>
               <button class="dl" type="button" data-psd="Themis_Pouch_PSD" aria-label="THEMIS PSD 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></button></div>
           </div>
@@ -346,9 +435,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
           </div>
           <div class="files">
             <div class="file"><div class="name">도안 <span class="chip">COLOR</span></div>
-              <a class="dl" href="files/Forsaken_Pouch_Color.png" data-name="Forsaken_Pouch_Color.png" aria-label="FORSAKEN 도안 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
+              <a class="dl" href="Forsaken_Pouch_Color.png" data-name="Forsaken_Pouch_Color.png" aria-label="FORSAKEN 도안 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
             <div class="file"><div class="name">화이트 레이어 <span class="chip">WHITE</span></div>
-              <a class="dl" href="files/Forsaken_Pouch_White.png" data-name="Forsaken_Pouch_White.png" aria-label="FORSAKEN 화이트 레이어 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
+              <a class="dl" href="Forsaken_Pouch_White.png" data-name="Forsaken_Pouch_White.png" aria-label="FORSAKEN 화이트 레이어 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a></div>
             <div class="file"><div class="name">원본 PSD <span class="chip">PSD</span></div>
               <button class="dl" type="button" data-psd="Forsaken_Pouch_PSD" aria-label="FORSAKEN PSD 다운로드"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></button></div>
           </div>
@@ -367,7 +456,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <section id="maker">
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="mono" style="color:var(--mute)">MOCKUP MAKER</span><h2><span class="ko">내 사진 넣어 보기</span></h2></div>
+        <div><span class="eb mono">MOCKUP MAKER</span><h2><span class="ko">내 사진 넣어 보기</span></h2></div>
         <p>사진 업로드 → 드래그로 위치, 슬라이더로 크기 조절 → PNG 저장. 사진은 서버에 올라가지 않음.</p>
       </div>
       <div class="maker">
@@ -381,7 +470,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
           <div class="field"><span class="mono">사진</span>
             <label class="upload" id="drop"><input type="file" id="photo" accept="image/*"><b>사진 고르기</b><span>또는 여기로 끌어다 놓기 · JPG, PNG, WEBP</span></label></div>
           <div class="field">
-            <div class="rowx"><span class="mono" style="color:var(--mute)">사진 크기</span><output id="zoomOut">100%</output></div>
+            <div class="rowx"><span class="lbl2">사진 크기</span><output id="zoomOut">100%</output></div>
             <input type="range" id="zoom" min="100" max="300" value="100" step="1" aria-label="사진 크기">
           </div>
           <div class="field"><span class="mono">저장 배경</span>
@@ -398,17 +487,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   <section id="guide">
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="mono" style="color:var(--mute)">PRINT LAYERS</span><h2><span class="ko">레이어 안내</span></h2></div>
+        <div><span class="eb mono">PRINT LAYERS</span><h2><span class="ko">레이어 안내</span></h2></div>
         <p>화이트 레이어 파일의 노란색 = 화이트 인쇄 영역</p>
       </div>
       <div class="guide">
         <div class="stack" aria-hidden="true">
           <div class="plane p3"><div class="face"></div></div>
-          <div class="plane p2"><div class="face"><img src="img/v_white.webp" alt=""></div></div>
-          <div class="plane p1"><div class="face"><img src="img/v_color.webp" alt=""></div></div>
-          <span class="lbl" style="top:calc(50% - 96px)"><b>도안 (COLOR)</b>TOP LAYER</span>
+          <div class="plane p2"><div class="face"><img src="v_white.webp" alt=""></div></div>
+          <div class="plane p1"><div class="face"><img src="v_color.webp" alt=""></div></div>
+          <span class="lbl" style="top:calc(50% - 80px)"><b>도안 (COLOR)</b>TOP LAYER</span>
           <span class="lbl" style="top:50%"><b>화이트</b>UNDER LAYER</span>
-          <span class="lbl" style="top:calc(50% + 96px)"><b>투명 파우치</b>BASE FILM</span>
+          <span class="lbl" style="top:calc(50% + 80px)"><b>투명 파우치</b>BASE FILM</span>
         </div>
         <div>
           <div class="steps">
@@ -454,7 +543,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     const id = 'p' + (++uid);
     const X0 = 20, X1 = 1112, YT = 34, YB = 1566; // body bounds incl. zipper strip
     const body = `M ${X0} ${YT}${wave(X0, X1, YT, 11, 52, 1)} L ${X1} ${YB}${wave(X0, X1, YB, 11, 52, -1)} Z`;
-    const art = kind === 't' ? 'img/themis_mock.webp' : 'img/villain_mock.webp';
+    const art = kind === 't' ? 'themis_mock.webp' : 'villain_mock.webp';
     const film = 'rgba(220,226,240,.025)';
     let teeth = '';
     for (let y = 86; y < 1520; y += 15) teeth += `<rect x="972" y="${y}" width="${y%60<30?34:24}" height="6" fill="rgba(190,194,206,.28)"/>`;
@@ -485,17 +574,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   document.getElementById('cardV').innerHTML = pouchSVG('v');
 
   /* drifting background pouches */
+
   const dr = document.getElementById('drifters');
-  const spots = [[2,70,'t'],[38,2,'v'],[58,74,'t'],[86,58,'v'],[24,44,'v'],[74,0,'t']];
-  spots.forEach(([l,t,k],i) => {
+  if (dr) [[2,70,'t'],[38,2,'v'],[58,74,'t'],[86,58,'v'],[24,44,'v'],[74,0,'t']].forEach(([l,t,k],i) => {
     const d = document.createElement('div'); d.className = 'drifter';
-    d.style.left = l + '%'; d.style.top = t + '%';
-    d.style.width = (44 + (i%3)*14) + 'px';
-    d.style.setProperty('--dx', (i%2?-1:1)*(20+i*6) + 'px');
-    d.style.setProperty('--dy', (i%2?1:-1)*(30+i*5) + 'px');
+    d.style.left = l + '%'; d.style.top = t + '%'; d.style.width = (38 + (i%3)*12) + 'px';
+    d.style.setProperty('--dx', (i%2?-1:1)*(20+i*6) + 'px'); d.style.setProperty('--dy', (i%2?1:-1)*(30+i*5) + 'px');
     d.style.setProperty('--r', (i%2?-1:1)*(8+i*3) + 'deg');
-    d.style.animationDuration = (16 + i*3) + 's';
-    d.style.animationDelay = (-i*2.3) + 's';
+    d.style.animationDuration = (16 + i*3) + 's'; d.style.animationDelay = (-i*2.3) + 's';
     d.innerHTML = pouchSVG(k); dr.appendChild(d);
   });
 
@@ -515,7 +601,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   }
 
   /* echo dust */
-  const cv = document.getElementById('dust'), cx = cv.getContext('2d');
+  const cv = document.getElementById('dust'); if (cv) { const cx = cv.getContext('2d');
   let W, H, P = [];
   function size(){ const dpr = Math.min(devicePixelRatio||1, 2); W = cv.width = innerWidth*dpr; H = cv.height = innerHeight*dpr;
     P = Array.from({length: Math.round(innerWidth/18)}, () => ({x:Math.random()*W, y:Math.random()*H, r:(Math.random()*1.4+.4)*dpr, v:(Math.random()*.25+.06)*dpr, h:Math.random()<.7?'233,220,178':'226,74,60', a:Math.random()*.5+.15})); }
@@ -524,7 +610,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     for (const p of P){ p.y -= p.v; p.x += Math.sin(p.y/80)*.15; if (p.y < -5){ p.y = H+5; p.x = Math.random()*W; }
       cx.fillStyle = `rgba(${p.h},${p.a})`; cx.beginPath(); cx.arc(p.x,p.y,p.r,0,7); cx.fill(); }
     if (!RM) requestAnimationFrame(tick); }
-  tick();
+  tick(); }
 
   /* ---------- loader ---------- */
   const L = document.getElementById('loader'), pct = document.getElementById('pct'), bar = document.getElementById('barfill'), st = document.getElementById('status');
@@ -579,7 +665,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     });
   });
 
-  async function psdBytes(base){ const t = await (await fetch('files/' + base + '.b64.txt')).text();
+  async function psdBytes(base){ const t = await (await fetch(base + '.b64.txt')).text();
     const bin = atob(t.trim()), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
   async function saveBlob(blob, name){
     const cap = await capP;
@@ -603,7 +689,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
     try {
       if (!window.JSZip) throw {code:'nozip'};
       const z = new JSZip();
-      for (const f of FILES) z.file(f, await (await fetch('files/' + f)).blob());
+      for (const f of FILES) z.file(f, await (await fetch(f)).blob());
       for (const p of ['Themis_Pouch_PSD','Forsaken_Pouch_PSD']) z.file(p + '.psd', await psdBytes(p));
       const blob = await z.generateAsync({type:'blob'});
       const cap = await capP;
@@ -624,7 +710,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
   const st2 = {kind:'t', bg:'clear', img:null, zoom:1, ox:0, oy:0};
   const arts = {};
   function loadImg(src){ return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
-  Promise.all([loadImg('img/themis_mock.webp'), loadImg('img/villain_mock.webp')]).then(([a,b]) => { arts.t = a; arts.v = b; draw(); });
+  Promise.all([loadImg('themis_mock.webp'), loadImg('villain_mock.webp')]).then(([a,b]) => { arts.t = a; arts.v = b; draw(); });
 
   function rr(c, x, y, w, h, r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
   function placeholder(c){
